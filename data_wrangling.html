@@ -227,7 +227,8 @@ div.tocify {
 
 <div id="r-data-wrangling" class="section level2">
 <h2>R data wrangling</h2>
-<p>import my file using relative path</p>
+<div id="import-my-file-using-relative-path" class="section level3">
+<h3>import my file using relative path</h3>
 <pre class="r"><code>litters_data = read_csv(file = &quot;./data_import_examples/FAS_litters.csv&quot;)</code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
@@ -242,9 +243,11 @@ div.tocify {
 ## )</code></pre>
 <pre class="r"><code>litters_data = janitor::clean_names(litters_data)</code></pre>
 </div>
+</div>
 <div id="look-at-the-data" class="section level2">
 <h2>look at the data</h2>
-<p>look at the litter data</p>
+<div id="look-at-the-litter-data" class="section level3">
+<h3>look at the litter data</h3>
 <pre class="r"><code>head(litters_data)</code></pre>
 <pre><code>## # A tibble: 6 x 8
 ##   group litter_number gd0_weight gd18_weight gd_of_birth pups_born_alive
@@ -296,7 +299,9 @@ div.tocify {
 ##              hist
 ##  ▁▃▇▇▇▆▁▁
 ##  ▂▃▃▇▆▂▁▁</code></pre>
-<p>skip some raws and variables</p>
+</div>
+<div id="skip-some-raws-and-variables" class="section level3">
+<h3>skip some raws and variables</h3>
 <pre class="r"><code>litters_data = read_csv(file = &quot;./data_import_examples/FAS_litters.csv&quot;, skip = 10, col_names = FALSE)</code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
@@ -319,7 +324,9 @@ div.tocify {
 ## 4 Con8  #3/5/3/83/3-3-2  NA      NA    20     8     0     8
 ## 5 Con8  #2/2/95/2        NA      NA    19     5     0     4
 ## 6 Con8  #3/6/2/2/95-3    NA      NA    20     7     0     7</code></pre>
-<p>Parsing columns</p>
+</div>
+<div id="parsing-columns" class="section level3">
+<h3>Parsing columns</h3>
 <pre class="r"><code>litters_data = read_csv(file = &quot;./data_import_examples/FAS_litters.csv&quot;,
   col_types = cols(
     Group = col_character(),
@@ -346,6 +353,39 @@ div.tocify {
 ## 6 Low8  #110                    25.5          42.7            20
 ## # ... with 3 more variables: `Pups born alive` &lt;int&gt;, `Pups dead @
 ## #   birth` &lt;int&gt;, `Pups survive` &lt;int&gt;</code></pre>
+</div>
+</div>
+<div id="other-format" class="section level2">
+<h2>other format</h2>
+<div id="read-excel-file" class="section level3">
+<h3>read excel file</h3>
+<pre class="r"><code>library(readxl)
+mlb11_data = read_excel(&quot;./data_import_examples/mlb11.xlsx&quot;, n_max = 20)
+head(mlb11_data, 5)</code></pre>
+<pre><code>## # A tibble: 5 x 12
+##   team   runs at_bats  hits homeruns bat_avg strikeouts stolen_bases  wins
+##   &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;      &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt;
+## 1 Texa…   855    5659  1599      210   0.283        930          143    96
+## 2 Bost…   875    5710  1600      203   0.28        1108          102    90
+## 3 Detr…   787    5563  1540      169   0.277       1143           49    95
+## 4 Kans…   730    5672  1560      129   0.275       1006          153    71
+## 5 St. …   762    5532  1513      162   0.273        978           57    90
+## # ... with 3 more variables: new_onbase &lt;dbl&gt;, new_slug &lt;dbl&gt;,
+## #   new_obs &lt;dbl&gt;</code></pre>
+<pre class="r"><code>mlb11_subdata = read_excel(&quot;./data_import_examples/mlb11.xlsx&quot;, n_max = 20, range = &quot;A1:E17&quot;)
+head(mlb11_subdata, 5)</code></pre>
+<pre><code>## # A tibble: 5 x 5
+##   team                 runs at_bats  hits homeruns
+##   &lt;chr&gt;               &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+## 1 Texas Rangers         855    5659  1599      210
+## 2 Boston Red Sox        875    5710  1600      203
+## 3 Detroit Tigers        787    5563  1540      169
+## 4 Kansas City Royals    730    5672  1560      129
+## 5 St. Louis Cardinals   762    5532  1513      162</code></pre>
+</div>
+<div id="section" class="section level3">
+<h3></h3>
+</div>
 </div>
 
 

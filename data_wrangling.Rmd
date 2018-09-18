@@ -15,7 +15,7 @@ library(tidyverse)
 
 ## R data wrangling
 
-import my file using relative path
+### import my file using relative path
 
 ```{r}
 litters_data = read_csv(file = "./data_import_examples/FAS_litters.csv")
@@ -24,7 +24,7 @@ litters_data = janitor::clean_names(litters_data)
 
 ## look at the data
 
-look at the litter data
+### look at the litter data
 
 ```{r}
 head(litters_data)
@@ -33,14 +33,14 @@ tail(litters_data)
 skimr::skim(litters_data)
 ```
 
-skip some raws and variables
+### skip some raws and variables
 
 ```{r}
 litters_data = read_csv(file = "./data_import_examples/FAS_litters.csv", skip = 10, col_names = FALSE)
 head(litters_data)
 ```
 
-Parsing columns
+### Parsing columns
 
 ```{r}
 litters_data = read_csv(file = "./data_import_examples/FAS_litters.csv",
@@ -57,3 +57,18 @@ litters_data = read_csv(file = "./data_import_examples/FAS_litters.csv",
 )
 tail(litters_data)
 ```
+
+## other format
+
+### read excel file
+
+```{r}
+library(readxl)
+mlb11_data = read_excel("./data_import_examples/mlb11.xlsx", n_max = 20)
+head(mlb11_data, 5)
+
+mlb11_subdata = read_excel("./data_import_examples/mlb11.xlsx", n_max = 20, range = "A1:E17")
+head(mlb11_subdata, 5)
+```
+
+### 
