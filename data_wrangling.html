@@ -244,6 +244,7 @@ div.tocify {
 </div>
 <div id="look-at-the-data" class="section level2">
 <h2>look at the data</h2>
+<p>look at the litter data</p>
 <pre class="r"><code>head(litters_data)</code></pre>
 <pre><code>## # A tibble: 6 x 8
 ##   group litter_number gd0_weight gd18_weight gd_of_birth pups_born_alive
@@ -295,6 +296,56 @@ div.tocify {
 ##              hist
 ##  ▁▃▇▇▇▆▁▁
 ##  ▂▃▃▇▆▂▁▁</code></pre>
+<p>skip some raws and variables</p>
+<pre class="r"><code>litters_data = read_csv(file = &quot;./data_import_examples/FAS_litters.csv&quot;, skip = 10, col_names = FALSE)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   X1 = col_character(),
+##   X2 = col_character(),
+##   X3 = col_double(),
+##   X4 = col_double(),
+##   X5 = col_integer(),
+##   X6 = col_integer(),
+##   X7 = col_integer(),
+##   X8 = col_integer()
+## )</code></pre>
+<pre class="r"><code>head(litters_data)</code></pre>
+<pre><code>## # A tibble: 6 x 8
+##   X1    X2                 X3    X4    X5    X6    X7    X8
+##   &lt;chr&gt; &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
+## 1 Con8  #3/5/2/2/95      28.5    NA    20     8     0     8
+## 2 Con8  #5/4/3/83/3      28      NA    19     9     0     8
+## 3 Con8  #1/6/2/2/95-2    NA      NA    20     7     0     6
+## 4 Con8  #3/5/3/83/3-3-2  NA      NA    20     8     0     8
+## 5 Con8  #2/2/95/2        NA      NA    19     5     0     4
+## 6 Con8  #3/6/2/2/95-3    NA      NA    20     7     0     7</code></pre>
+<p>Parsing columns</p>
+<pre class="r"><code>litters_data = read_csv(file = &quot;./data_import_examples/FAS_litters.csv&quot;,
+  col_types = cols(
+    Group = col_character(),
+    `Litter Number` = col_character(),
+    `GD0 weight` = col_double(),
+    `GD12 weight` = col_double(),
+    `GD of Birth` = col_integer(),
+    `Pups born alive` = col_integer(),
+    `Pups dead @ birth` = col_integer(),
+    `Pups survive` = col_integer()
+  )
+)</code></pre>
+<pre><code>## Warning: The following named parsers don't match the column names: GD12
+## weight</code></pre>
+<pre class="r"><code>tail(litters_data)</code></pre>
+<pre><code>## # A tibble: 6 x 8
+##   Group `Litter Number` `GD0 weight` `GD18 weight` `GD of Birth`
+##   &lt;chr&gt; &lt;chr&gt;                  &lt;dbl&gt;         &lt;dbl&gt;         &lt;int&gt;
+## 1 Low8  #79                     25.4          43.8            19
+## 2 Low8  #100                    20            39.2            20
+## 3 Low8  #4/84                   21.8          35.2            20
+## 4 Low8  #108                    25.6          47.5            20
+## 5 Low8  #99                     23.5          39              20
+## 6 Low8  #110                    25.5          42.7            20
+## # ... with 3 more variables: `Pups born alive` &lt;int&gt;, `Pups dead @
+## #   birth` &lt;int&gt;, `Pups survive` &lt;int&gt;</code></pre>
 </div>
 
 
